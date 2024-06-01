@@ -14,7 +14,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-private const val STUB_UUID = "f2dff8c3-217f-4c0a-984c-7deac07aeffe"
+private const val STUB_BOOK_UUID = "f2dff8c3-217f-4c0a-984c-7deac07aeffe"
 
 @ExtendWith(MockKExtension::class)
 @MockKExtension.CheckUnnecessaryStub
@@ -23,12 +23,12 @@ class DepositBookUseCaseTest {
     @Test
     fun `generateUUID should return a new UUID`() {
         val stubUuidWrapper: UuidWrapper = mockk<UuidWrapper>()
-        every { stubUuidWrapper.generateUUID() } returns STUB_UUID
+        every { stubUuidWrapper.generateUUID() } returns STUB_BOOK_UUID
         val depositBookUseCase = DepositBookUseCase(stubUuidWrapper, mockk<BookRepository>())
 
         val bookId = depositBookUseCase.generateUUID()
 
-        assertEquals(STUB_UUID, bookId)
+        assertEquals(STUB_BOOK_UUID, bookId)
     }
 
     @Test
@@ -36,32 +36,40 @@ class DepositBookUseCaseTest {
         val repository: BookRepository = spyk<BookRepository>()
         val depositBookUseCase = DepositBookUseCase(mockk<UuidWrapper>(), repository)
 
-        depositBookUseCase.depositBookCommand(STUB_UUID, "Running Serverless", "Gojko Adzic")
+        depositBookUseCase.depositBookCommand(STUB_BOOK_UUID, "Running Serverless", "Gojko Adzic")
 
-        verify(exactly = 1) { repository.save(BookAggregate.create(STUB_UUID, "Running Serverless", "Gojko Adzic")) }
-    }
-
-    @Test
-    fun `queryBookById should throw an IllegalStateException when not found just deposited book`() {
-        val repository: BookRepository = mockk<BookRepository>()
-        every { repository.getById(STUB_UUID) } returns null
-        val depositBookUseCase = DepositBookUseCase(mockk<UuidWrapper>(), repository)
-
-        assertThrows<IllegalStateException> {
-            depositBookUseCase.queryBookById(STUB_UUID)
+        verify(exactly = 1) {
+            repository.save(
+                BookAggregate.create(
+                    STUB_BOOK_UUID,
+                    "Running Serverless",
+                    "Gojko Adzic"
+                )
+            )
         }
     }
 
     @Test
-    fun `queryBookById should return book with given id`() {
+    fun `getBookById should throw an IllegalStateException when not found just deposited book`() {
         val repository: BookRepository = mockk<BookRepository>()
-        val expected = BookAggregate.create(STUB_UUID, "Running Serverless", "Gojko Adzic")
-        every { repository.getById(STUB_UUID) } returns expected
+        every { repository.getById(STUB_BOOK_UUID) } returns null
         val depositBookUseCase = DepositBookUseCase(mockk<UuidWrapper>(), repository)
 
-        val aggregate = depositBookUseCase.queryBookById(STUB_UUID)
+        assertThrows<IllegalStateException> {
+            depositBookUseCase.getBookById(STUB_BOOK_UUID)
+        }
+    }
 
-        assertEquals(STUB_UUID, aggregate.aggregateId)
+    @Test
+    fun `getBookById should return book with given id`() {
+        val repository: BookRepository = mockk<BookRepository>()
+        val expected = BookAggregate.create(STUB_BOOK_UUID, "Running Serverless", "Gojko Adzic")
+        every { repository.getById(STUB_BOOK_UUID) } returns expected
+        val depositBookUseCase = DepositBookUseCase(mockk<UuidWrapper>(), repository)
+
+        val aggregate = depositBookUseCase.getBookById(STUB_BOOK_UUID)
+
+        assertEquals(STUB_BOOK_UUID, aggregate.aggregateId)
         assertEquals("Running Serverless", aggregate.name)
         assertEquals("Gojko Adzic", aggregate.author)
     }

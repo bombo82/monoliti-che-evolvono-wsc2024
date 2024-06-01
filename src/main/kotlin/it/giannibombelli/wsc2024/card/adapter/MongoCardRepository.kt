@@ -48,7 +48,9 @@ class MongoCardRepository : CardRepository {
         val documentInDb: CardDocument? = collection.find<CardDocument>(filter).firstOrNull()
 
         documentInDb?.let {
-            CardAggregate(documentInDb.cardId)
+            CardAggregate(documentInDb.cardId).apply {
+                initialize(documentInDb.balance)
+            }
         }
     }
 
@@ -56,15 +58,16 @@ class MongoCardRepository : CardRepository {
         @BsonId
         val id: ObjectId,
         val cardId: String,
+        val balance: Int,
         val createdAt: LocalDateTime,
         val lastUpdatedAt: LocalDateTime
     )
 
     private fun CardAggregate.mapToDocument(): CardDocument {
         val now = LocalDateTime.now()
-        return CardDocument(ObjectId(), aggregateId, now, now)
+        return CardDocument(ObjectId(), aggregateId, balance, now, now)
     }
 
     private fun CardAggregate.mapToDocument(objectId: ObjectId, createdAt: LocalDateTime): CardDocument =
-        CardDocument(objectId, aggregateId, createdAt, LocalDateTime.now())
+        CardDocument(objectId, aggregateId, balance, createdAt, LocalDateTime.now())
 }

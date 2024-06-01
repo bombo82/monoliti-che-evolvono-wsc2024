@@ -6,9 +6,18 @@ import it.giannibombelli.wsc2024.common.domain.AggregateId
 typealias CardId = AggregateId
 
 class CardAggregate(override val aggregateId: CardId) : Aggregate {
+    private var _balance: Int = 0
+    val balance: Int
+        get() = _balance
+
+    fun CardAggregate.initialize(balance: Int) {
+        this._balance = balance
+    }
 
     companion object {
-        fun create(cardId: CardId): CardAggregate = CardAggregate(cardId)
+        fun create(cardId: CardId): CardAggregate = CardAggregate(cardId).apply {
+            initialize(0)
+        }
     }
 
     override fun equals(other: Any?): Boolean {
@@ -22,5 +31,9 @@ class CardAggregate(override val aggregateId: CardId) : Aggregate {
 
     override fun hashCode(): Int {
         return aggregateId.hashCode()
+    }
+
+    fun addPoints(points: Int) {
+        this._balance += points
     }
 }

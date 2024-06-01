@@ -1,7 +1,7 @@
 package it.giannibombelli.wsc2024.common.adapter
 
-import it.giannibombelli.wsc2024.common.domain.UUID as UUUIDWrapper
 import it.giannibombelli.wsc2024.common.domain.UuidWrapper
+import it.giannibombelli.wsc2024.common.domain.UUID as UUUIDWrapper
 import kotlinx.uuid.UUID as KotlinxUuidUUID
 
 open class SoftworkUuidWrapper : UuidWrapper {

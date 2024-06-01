@@ -19,7 +19,6 @@ dependencies {
     implementation(libs.bundles.ktor.client.common)
     implementation(libs.uuid)
     implementation(libs.bundles.mongodb)
-    implementation(libs.rabbitmq)
 
     testImplementation(libs.bundles.ktor.test)
 }

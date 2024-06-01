@@ -24,7 +24,7 @@ fun Application.bookHttpController(depositBookUseCase: DepositBookUseCase) {
 
                 call.response.status(HttpStatusCode.Created)
                 call.response.headers.append(HttpHeaders.Location, "$protocol://$fqdn:$port/${MODULE_NAME}/${bookId}")
-                call.respond(depositBookUseCase.queryBookById(bookId).mapToResponseDto())
+                call.respond(depositBookUseCase.getBookById(bookId).mapToResponseDto())
             }
         }
     }

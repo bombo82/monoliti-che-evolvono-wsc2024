@@ -1,7 +1,6 @@
 package it.giannibombelli.wsc2024.card
 
 import io.ktor.server.application.*
-import it.giannibombelli.wsc2024.card.adapter.MongoCardRepository
 import it.giannibombelli.wsc2024.card.adapter.cardHttpController
 import it.giannibombelli.wsc2024.card.domain.CardRepository
 import it.giannibombelli.wsc2024.card.domain.CreateCardUseCase
@@ -13,7 +12,7 @@ const val MODULE_NAME = "card"
 
 fun Application.cardModule() {
     val uuidWrapper: UuidWrapper = SoftworkUuidWrapper()
-    val repository: CardRepository = MongoCardRepository()
+    val repository: CardRepository = createCardRepository()
 
     cardHttpController(
         CreateCardUseCase(uuidWrapper, repository),

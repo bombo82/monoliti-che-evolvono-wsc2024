@@ -11,7 +11,7 @@ class DepositBookUseCase(private val uuidWrapper: UuidWrapper, private val repos
         repository.save(book)
     }
 
-    fun queryBookById(bookId: BookId): BookAggregate {
+    fun getBookById(bookId: BookId): BookAggregate {
         return repository.getById(bookId) ?: throw IllegalStateException()
     }
 }

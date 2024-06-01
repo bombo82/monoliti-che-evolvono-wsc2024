@@ -13,7 +13,6 @@ dependencyResolutionManagement {
             version("logbackVersion", "1.5.6")
             version("uuidVersion", "0.0.25")
             version("mongodbVersion", "5.1.0")
-            version("rabbitmqVersion", "5.21.0")
             version("mockkVersion", "1.13.11")
 
             plugin("jvm", "kotlin('jvm')").versionRef("kotlin")
@@ -40,7 +39,6 @@ dependencyResolutionManagement {
             library("uuid", "app.softwork", "kotlinx-uuid-core").versionRef("uuidVersion")
             library("mongodb-driver", "org.mongodb", "mongodb-driver-kotlin-coroutine").versionRef("mongodbVersion")
             library("mongodb-bson", "org.mongodb", "bson-kotlinx").versionRef("mongodbVersion")
-            library("rabbitmq", "com.rabbitmq", "amqp-client").versionRef("rabbitmqVersion")
             library("ktor-client-core", "io.ktor", "ktor-client-core").versionRef("ktorVersion")
             library("ktor-client-cio", "io.ktor", "ktor-client-cio").versionRef("ktorVersion")
             library(

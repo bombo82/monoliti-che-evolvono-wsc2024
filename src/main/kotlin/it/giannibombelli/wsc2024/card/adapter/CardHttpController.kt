@@ -43,8 +43,6 @@ fun Application.cardHttpController(createCardUseCase: CreateCardUseCase, querySe
 }
 
 @Serializable
-data class CardResponseDto(
-    val id: String
-)
+data class CardResponseDto(val id: String, val balance: Int)
 
-private fun CardAggregate.mapToResponseDto(): CardResponseDto = CardResponseDto(aggregateId)
+private fun CardAggregate.mapToResponseDto(): CardResponseDto = CardResponseDto(aggregateId, balance)
