@@ -91,7 +91,7 @@ class BookApiTest {
             }
 
             application {
-                bookModule()
+                bookModule(FakeCardClient())
             }
 
             testClient(client)

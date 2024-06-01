@@ -20,7 +20,7 @@ fun Application.bookHttpController(depositBookUseCase: DepositBookUseCase) {
                 val (cardId, name, author) = call.receive<DepositBookDto>()
 
                 val bookId = depositBookUseCase.generateUUID()
-                depositBookUseCase.depositBookCommand(bookId, name, author)
+                depositBookUseCase.depositBookCommand(bookId, name, author, cardId)
 
                 call.response.status(HttpStatusCode.Created)
                 call.response.headers.append(HttpHeaders.Location, "$protocol://$fqdn:$port/${MODULE_NAME}/${bookId}")
