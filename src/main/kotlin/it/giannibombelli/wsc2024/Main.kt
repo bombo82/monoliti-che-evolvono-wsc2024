@@ -10,6 +10,7 @@ import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.routing.*
 import it.giannibombelli.wsc2024.book.bookModule
 import it.giannibombelli.wsc2024.card.cardModule
+import it.giannibombelli.wsc2024.common.Environment
 import kotlinx.serialization.json.Json
 import org.slf4j.LoggerFactory
 

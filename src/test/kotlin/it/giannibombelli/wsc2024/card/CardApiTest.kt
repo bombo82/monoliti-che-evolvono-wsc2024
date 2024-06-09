@@ -8,9 +8,9 @@ import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.routing.*
 import io.ktor.server.testing.*
-import it.giannibombelli.wsc2024.Environment
-import it.giannibombelli.wsc2024.assertNotBlankFromJsonElement
-import it.giannibombelli.wsc2024.testClient
+import it.giannibombelli.wsc2024.common.Environment
+import it.giannibombelli.wsc2024.common.assertNotBlankFromJsonElement
+import it.giannibombelli.wsc2024.common.testClient
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonPrimitive

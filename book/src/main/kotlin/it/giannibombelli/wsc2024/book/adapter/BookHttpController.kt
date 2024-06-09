@@ -5,10 +5,10 @@ import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import it.giannibombelli.wsc2024.Environment
 import it.giannibombelli.wsc2024.book.MODULE_NAME
 import it.giannibombelli.wsc2024.book.domain.BookAggregate
 import it.giannibombelli.wsc2024.book.domain.DepositBookUseCase
+import it.giannibombelli.wsc2024.common.Environment
 import kotlinx.serialization.Serializable
 
 fun Application.bookHttpController(depositBookUseCase: DepositBookUseCase) {

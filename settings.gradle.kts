@@ -2,6 +2,7 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.5.0"
 }
 rootProject.name = "wsc2024"
+include("common", "common-test", "book")
 
 dependencyResolutionManagement {
     versionCatalogs {
@@ -75,7 +76,8 @@ dependencyResolutionManagement {
                     "kotlin-test",
                     "mockk",
                     "ktor-server-test-host",
-                    "ktor-client-content-negotiation"
+                    "ktor-client-content-negotiation",
+                    "ktor-serialization-kotlinx-json"
                 )
             )
         }

@@ -3,8 +3,8 @@ package it.giannibombelli.wsc2024.book.adapter
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.request.*
-import it.giannibombelli.wsc2024.Environment
 import it.giannibombelli.wsc2024.book.domain.CardClient
+import it.giannibombelli.wsc2024.common.Environment
 import it.giannibombelli.wsc2024.common.domain.AggregateId
 import kotlinx.coroutines.runBlocking
 

@@ -1,4 +1,4 @@
-package it.giannibombelli.wsc2024
+package it.giannibombelli.wsc2024.common
 
 import java.lang.System.getenv
 

@@ -1,4 +1,4 @@
-package it.giannibombelli.wsc2024
+package it.giannibombelli.wsc2024.common
 
 import io.ktor.client.*
 import io.ktor.client.plugins.contentnegotiation.*

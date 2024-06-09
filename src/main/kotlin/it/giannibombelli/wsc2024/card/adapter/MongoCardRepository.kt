@@ -5,11 +5,11 @@ import com.mongodb.client.model.IndexOptions
 import com.mongodb.client.model.Indexes
 import com.mongodb.kotlin.client.coroutine.MongoClient
 import com.mongodb.kotlin.client.coroutine.MongoCollection
-import it.giannibombelli.wsc2024.Environment
 import it.giannibombelli.wsc2024.card.MODULE_NAME
 import it.giannibombelli.wsc2024.card.domain.CardAggregate
 import it.giannibombelli.wsc2024.card.domain.CardId
 import it.giannibombelli.wsc2024.card.domain.CardRepository
+import it.giannibombelli.wsc2024.common.Environment
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.runBlocking
 import org.bson.codecs.pojo.annotations.BsonId

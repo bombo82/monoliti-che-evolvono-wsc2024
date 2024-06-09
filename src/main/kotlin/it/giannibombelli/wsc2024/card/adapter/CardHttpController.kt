@@ -4,12 +4,12 @@ import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import it.giannibombelli.wsc2024.Environment
 import it.giannibombelli.wsc2024.card.MODULE_NAME
 import it.giannibombelli.wsc2024.card.domain.CardAggregate
 import it.giannibombelli.wsc2024.card.domain.CardId
 import it.giannibombelli.wsc2024.card.domain.CreateCardUseCase
 import it.giannibombelli.wsc2024.card.domain.QueryService
+import it.giannibombelli.wsc2024.common.Environment
 import kotlinx.serialization.Serializable
 
 fun Application.cardHttpController(createCardUseCase: CreateCardUseCase, queryService: QueryService) {
