@@ -18,6 +18,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 
 val basePath = "${Environment().http.protocol}://${Environment().http.fqdn}:${Environment().http.port}"
+val bookBasePath = "${Environment().http.protocol}://${Environment().http.fqdn}:${Environment().http.port + 2}"
 
 /**
  * This file contains acceptance tests written from the viewpoint of the user of our system and covers end-to-end flow.
@@ -81,7 +82,7 @@ class CustomerTest {
         requireNotNull(cardId)
         require(cardId.isNotBlank())
 
-        val httpResponse = testHttpClient().post("$basePath/book") {
+        val httpResponse = testHttpClient().post("$bookBasePath/book") {
             contentType(ContentType.Application.Json)
             setBody(
                 """

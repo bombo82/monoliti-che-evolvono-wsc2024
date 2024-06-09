@@ -22,7 +22,6 @@ application {
 
 dependencies {
     implementation(project(":common"))
-    implementation(project(":book"))
 
     implementation(libs.bundles.ktor.server.common)
     implementation(libs.bundles.ktor.client.common)
