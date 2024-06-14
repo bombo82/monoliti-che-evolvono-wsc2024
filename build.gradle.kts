@@ -4,6 +4,8 @@ version = "1.0-SNAPSHOT"
 plugins {
     kotlin("jvm") version libs.versions.kotlin.get()
     kotlin("plugin.serialization") version libs.versions.kotlin.get()
+    id("io.ktor.plugin") version libs.versions.ktorVersion.get()
+    id("application")
 }
 
 kotlin {
@@ -12,6 +14,10 @@ kotlin {
 
 repositories {
     mavenCentral()
+}
+
+application {
+    mainClass.set("it.giannibombelli.wsc2024.MainKt")
 }
 
 dependencies {
@@ -26,4 +32,3 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
-

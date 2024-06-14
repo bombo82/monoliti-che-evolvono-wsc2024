@@ -6,7 +6,7 @@ rootProject.name = "wsc2024"
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
-            version("jvm", "21")
+            version("jvm", "17")
             version("kotlin", "1.9.22")
             version("ktorVersion", "2.3.11")
             version("serializationVersion", "1.6.3")
@@ -61,7 +61,13 @@ dependencyResolutionManagement {
                     "logback-classic"
                 )
             )
-            bundle("ktor-client-common", listOf("ktor-client-core", "ktor-client-cio"))
+            bundle(
+                "ktor-client-common", listOf(
+                    "ktor-client-core", "ktor-client-cio",
+                    "ktor-client-content-negotiation",
+                    "ktor-serialization-kotlinx-json"
+                )
+            )
             bundle("mongodb", listOf("mongodb-driver", "mongodb-bson"))
 
             bundle(
